@@ -42,3 +42,7 @@ tmp
 _cgo_defun.c
 _cgo_export.*
 _cgo_gotypes.go
+
+macbook.conf
+iphone.conf
+`
