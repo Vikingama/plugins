@@ -1,4 +1,4 @@
-# (D.C.S.G?)
+# > D.C.S.G
 DOMAIN-SUFFIX,9cache.com
 DOMAIN-SUFFIX,9gag.com
 DOMAIN-SUFFIX,abc.com
@@ -21,6 +21,7 @@ DOMAIN-SUFFIX,blubrry.com
 DOMAIN-SUFFIX,box.com
 DOMAIN-SUFFIX,brave.com
 DOMAIN-SUFFIX,bullguard.com
+DOMAIN-SUFFIX,c-span.org
 DOMAIN-SUFFIX,castbox.fm
 DOMAIN-SUFFIX,change.org
 DOMAIN-SUFFIX,cloudcone.com
@@ -28,7 +29,6 @@ DOMAIN-SUFFIX,clyp.it
 DOMAIN-SUFFIX,cna.com.tw
 DOMAIN-SUFFIX,conoha.jp
 DOMAIN-SUFFIX,coursehero.com
-DOMAIN-SUFFIX,c-span.org
 DOMAIN-SUFFIX,dailymotion.com
 DOMAIN-SUFFIX,daum.net
 DOMAIN-SUFFIX,deadline.com
@@ -177,10 +177,10 @@ DOMAIN-SUFFIX,wsj.net
 DOMAIN-SUFFIX,x.co
 DOMAIN-SUFFIX,yandex.ru
 DOMAIN-SUFFIX,you-get.org
+DOMAIN-SUFFIX,z-lib.org
 DOMAIN-SUFFIX,zaobao.com
 DOMAIN-SUFFIX,zello.com
 DOMAIN-SUFFIX,zeronet.io
-DOMAIN-SUFFIX,z-lib.org
 DOMAIN-SUFFIX,zophar.net
 DOMAIN-SUFFIX,zyxel.com
 DOMAIN,lab.skk.moe
@@ -219,7 +219,9 @@ DOMAIN-SUFFIX,getoutline.org
 DOMAIN-SUFFIX,ggpht.com
 DOMAIN-SUFFIX,gmail.com
 DOMAIN-SUFFIX,gmodules.com
-# DOMAIN-SUFFIX,gstatic.com
+DOMAIN-KEYWORD,.blogspot.
+DOMAIN-KEYWORD,google
+DOMAIN-SUFFIX,goog
 DOMAIN-SUFFIX,gvt0.com
 DOMAIN-SUFFIX,gvt1.com
 DOMAIN-SUFFIX,gvt3.com
@@ -227,8 +229,8 @@ DOMAIN-SUFFIX,itasoftware.com
 DOMAIN-SUFFIX,on2.com
 DOMAIN-SUFFIX,recaptcha.net
 DOMAIN-SUFFIX,schema.org
-DOMAIN-SUFFIX,tensorflow.org
 DOMAIN-SUFFIX,tenor.com
+DOMAIN-SUFFIX,tensorflow.org
 DOMAIN-SUFFIX,tfhub.dev
 DOMAIN-SUFFIX,tiltbrush.com
 DOMAIN-SUFFIX,waymo.com
@@ -238,9 +240,6 @@ DOMAIN-SUFFIX,webrtc.org
 DOMAIN-SUFFIX,widevine.com
 DOMAIN-SUFFIX,xn--ngstr-lra8j.com
 DOMAIN-SUFFIX,zynamics.com
-DOMAIN-KEYWORD,google
-DOMAIN-KEYWORD,.blogspot.
-DOMAIN-SUFFIX,goog
 # > Apple
 DOMAIN,testflight.apple.com
 # > Automattic
@@ -305,15 +304,16 @@ DOMAIN,cloud-cdn-digitalocean-com.global.ssl.fastly.net
 DOMAIN,github.global.ssl.fastly.net
 DOMAIN,nytimes.map.fastly.net
 # > Line
-DOMAIN-SUFFIX,line.me
 DOMAIN-SUFFIX,line-apps.com
 DOMAIN-SUFFIX,line-scdn.net
+DOMAIN-SUFFIX,line.me
 DOMAIN-SUFFIX,naver.jp
 IP-CIDR,103.2.30.0/23,no-resolve
 IP-CIDR,125.209.208.0/20,no-resolve
 IP-CIDR,147.92.128.0/17,no-resolve
 IP-CIDR,203.104.144.0/21,no-resolve
 # > Meta
+DOMAIN-KEYWORD,.facebook.
 DOMAIN-SUFFIX,accountkit.com
 DOMAIN-SUFFIX,cdninstagram.com
 DOMAIN-SUFFIX,f8.com
@@ -334,7 +334,6 @@ DOMAIN-SUFFIX,readyatdawn.com
 DOMAIN-SUFFIX,rocksdb.org
 DOMAIN-SUFFIX,whatsapp.com
 DOMAIN-SUFFIX,whatsapp.net
-DOMAIN-KEYWORD,.facebook.
 # > Microsoft
 DOMAIN-SUFFIX,aka.ms
 DOMAIN-SUFFIX,github.blog
@@ -349,8 +348,8 @@ DOMAIN,assets2.xboxlive.com
 DOMAIN,az416426.vo.msecnd.net
 DOMAIN,az668014.vo.msecnd.net
 # > Pinterest
-DOMAIN-SUFFIX,pinimg.com
 DOMAIN-KEYWORD,.pinterest.
+DOMAIN-SUFFIX,pinimg.com
 # > pixiv
 DOMAIN-SUFFIX,pixiv.net
 DOMAIN-SUFFIX,pixiv.org
@@ -365,7 +364,6 @@ DOMAIN-SUFFIX,reuters.com
 DOMAIN-SUFFIX,reutersmedia.net
 # > Steam
 DOMAIN-SUFFIX,steamcommunity.com
-# DOMAIN,store.steampowered.com
 # > Telegram
 DOMAIN-SUFFIX,legra.ph
 DOMAIN-SUFFIX,t.me
@@ -374,19 +372,19 @@ DOMAIN-SUFFIX,telegra.ph
 DOMAIN-SUFFIX,telegram.me
 DOMAIN-SUFFIX,telegram.org
 DOMAIN-SUFFIX,telesco.pe
-IP-CIDR,91.108.4.0/22,no-resolve
-IP-CIDR,91.108.8.0/22,no-resolve
+IP-CIDR,149.154.160.0/20,no-resolve
+IP-CIDR,185.76.151.0/24,no-resolve
+IP-CIDR,91.105.192.0/23,no-resolve
 IP-CIDR,91.108.12.0/22,no-resolve
 IP-CIDR,91.108.16.0/22,no-resolve
 IP-CIDR,91.108.20.0/22,no-resolve
+IP-CIDR,91.108.4.0/22,no-resolve
 IP-CIDR,91.108.56.0/22,no-resolve
-IP-CIDR,91.105.192.0/23,no-resolve
-IP-CIDR,149.154.160.0/20,no-resolve
-IP-CIDR,185.76.151.0/24,no-resolve
-IP-CIDR6,2001:b28:f23d::/48,no-resolve
-IP-CIDR6,2001:b28:f23f::/48,no-resolve
+IP-CIDR,91.108.8.0/22,no-resolve
 IP-CIDR6,2001:67c:4e8::/48,no-resolve
 IP-CIDR6,2001:b28:f23c::/48,no-resolve
+IP-CIDR6,2001:b28:f23d::/48,no-resolve
+IP-CIDR6,2001:b28:f23f::/48,no-resolve
 IP-CIDR6,2a0a:f280::/32,no-resolve
 # > The Economist
 DOMAIN-SUFFIX,economist.com
@@ -411,7 +409,7 @@ DOMAIN-SUFFIX,twitpic.com
 DOMAIN-SUFFIX,twitter.com
 DOMAIN-SUFFIX,twitter.jp
 DOMAIN-SUFFIX,vine.co
-# > Wikimedia Foundation
+# > Wikimedia
 DOMAIN-SUFFIX,mediawiki.org
 DOMAIN-SUFFIX,wikibooks.org
 DOMAIN-SUFFIX,wikidata.org
@@ -431,7 +429,7 @@ DOMAIN,search.yahoo.co.jp
 # > Yandex
 DOMAIN-SUFFIX,yadi.sk
 DOMAIN,disk.yandex.com
-# (Region-Restricted Access Denied)
+# > Region-Restricted Access Denied
 DOMAIN-SUFFIX,aicoin.com
 DOMAIN-SUFFIX,aimoon.com
 DOMAIN-SUFFIX,engadget.com
@@ -451,23 +449,22 @@ DOMAIN,beta.music.apple.com // Apple Music Web
 DOMAIN,books.itunes.apple.com // iBooks Store download
 DOMAIN,lookup-api.apple.com // Look Up
 DOMAIN,radio.itunes.apple.com // Apple Music Radio
-# > Web Preview
 DOMAIN,apps.apple.com
 DOMAIN,books.apple.com
 DOMAIN,itunes.apple.com
 DOMAIN,tv.apple.com
 # > News
-DOMAIN,gateway.icloud.com
 DOMAIN-SUFFIX,apple.news
+DOMAIN,apple.comscoreresearch.com
+DOMAIN,gateway.icloud.com
 DOMAIN,news-assets.apple.com
-DOMAIN,news-client.apple.com
 DOMAIN,news-client-search.apple.com
+DOMAIN,news-client.apple.com
 DOMAIN,news-edge.apple.com
 DOMAIN,news-events.apple.com
-DOMAIN,apple.comscoreresearch.com
 # > Microsoft
 DOMAIN-SUFFIX,bing.com
-DOMAIN-SUFFIX,linkedin.com
 DOMAIN-SUFFIX,licdn.com
+DOMAIN-SUFFIX,linkedin.com
 DOMAIN-SUFFIX,msn.com
 DOMAIN-SUFFIX,skype.com

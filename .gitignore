@@ -45,4 +45,5 @@ _cgo_gotypes.go
 
 macbook.conf
 iphone.conf
-`
+macOS.conf
+iOS.conf
