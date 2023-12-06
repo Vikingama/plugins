@@ -1,7 +1,12 @@
-const version = 'V1.0.9';
+const version = 'V1.0.10';
 if (-1 != $request.url.indexOf('replyList')) {
   var t = JSON.parse($response.body);
   t.data.length && (t.data = t.data.filter(t => t.id)),
+    $done({ body: JSON.stringify(t) });
+} else if (-1 != $request.url.indexOf('main/init')) {
+  var t = JSON.parse($response.body);
+  t.data.length &&
+    (t.data = t.data.filter(t => !(945 == t.entityId || 6390 == t.entityId))),
     $done({ body: JSON.stringify(t) });
 } else if (-1 != $request.url.indexOf('indexV8')) {
   var t = JSON.parse($response.body);

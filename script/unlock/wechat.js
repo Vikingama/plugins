@@ -1,6 +1,6 @@
 let persisVal = read('UnblockURLinWeChat');
-let useCache = persisVal.useCache === 'true';
 let forceRedirect = persisVal.forceRedirect === 'true';
+let useCache = persisVal.useCache === 'true';
 let wechatExportKey = persisVal.wechatExportKey || '';
 if (typeof $argument != 'undefined') {
   let arg = Object.fromEntries(
@@ -9,9 +9,9 @@ if (typeof $argument != 'undefined') {
   useCache = arg.useCache === 'true';
   forceRedirect = arg.forceRedirect === 'ture';
 }
-const respBody = $response.body;
-const cacheURL = 'https://web.archive.org/web/20991231999999/';
 const alipayScheme = 'alipays://platformapi/startapp?appId=20000067&url=';
+const cacheURL = 'https://web.archive.org/web/20991231999999/';
+const respBody = $response.body;
 const isQuanX = typeof $notify != 'undefined';
 const isSurgeiOS =
   'undefined' !== typeof $environment &&
@@ -53,6 +53,10 @@ if (
     );
     $done({});
   } else {
+    if (trueURL.includes('https://spotify.link')) {
+      const pattern = /\$full_url=([^&]+)/;
+      trueURL = decodeURIComponent(trueURL).match(pattern)[1];
+    }
     notify('', '点击跳转到浏览器打开', trueURL, trueURL);
     if (forceRedirect) {
       let redirect = {
@@ -110,7 +114,6 @@ if (
 } else {
   $done({});
 }
-
 function notify(title = '', subtitle = '', content = '', open_url) {
   if (isQuanX && /iOS/.test($environment.version)) {
     let opts = {};

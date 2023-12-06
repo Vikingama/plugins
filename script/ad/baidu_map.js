@@ -4565,12 +4565,10 @@ for (let i = 0; i < repHeadMessage.messageHead.length; i++) {
 }
 const mergeResultAndAds = Uint8Array.from([...newResult, ...newAds]);
 const newMd5 = md5(mergeResultAndAds);
-
 repHeadMessage.md5 = newMd5;
 repHeadMessage.messageHead[0].length = newResult.byteLength;
 repHeadMessage.messageHead[1].offset = newResult.byteLength;
 repHeadMessage.messageHead[1].length = newAds.byteLength;
-
 const newRepHead = repHeadType.encode(repHeadMessage).finish();
 const totalLength =
   beginOffset +
@@ -4578,7 +4576,6 @@ const totalLength =
   newResult.byteLength +
   newAds.byteLength;
 let body = new Uint8Array(totalLength);
-
 body.set(
   Uint8Array.from([
     (newRepHead.byteLength >> 24) & 0xff,

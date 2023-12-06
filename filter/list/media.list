@@ -1,4 +1,3 @@
-# (Live)
 # > Twitch
 DOMAIN-SUFFIX,ext-twitch.tv
 DOMAIN-SUFFIX,jtvnw.net
@@ -6,15 +5,12 @@ DOMAIN-SUFFIX,ttvnw.net
 DOMAIN-SUFFIX,twitch-ext.rootonline.de
 DOMAIN-SUFFIX,twitch.tv
 DOMAIN-SUFFIX,twitchcdn.net
-
-# (Music)
 # > Deezer
 USER-AGENT,Deezer*
 DOMAIN-SUFFIX,deezer.com
 DOMAIN-SUFFIX,dzcdn.net
 # > JOOX
 USER-AGENT,JOOX*
-USER-AGENT,WeMusic*
 DOMAIN-KEYWORD,jooxweb-api
 DOMAIN-SUFFIX,joox.com
 # > KKBOX
@@ -43,16 +39,12 @@ DOMAIN-SUFFIX,tidal.com
 # > YouTubeMusic
 USER-AGENT,com.google.ios.youtubemusic*
 USER-AGENT,YouTubeMusic*
-
-# (Podcast)
 # > Himalaya
 USER-AGENT,Himalaya*
 DOMAIN-SUFFIX,himalaya.com
 # > Overcast
 USER-AGENT,Overcast*
 DOMAIN-SUFFIX,overcast.fm
-
-# (Video)
 # > AbemaTV
 USER-AGENT,AbemaTV*
 DOMAIN-KEYWORD,abematv.akamaized.net
@@ -142,7 +134,7 @@ DOMAIN,cdn.registerdisney.go.com
 DOMAIN-SUFFIX,dmm-extension.com
 DOMAIN-SUFFIX,dmm.co.jp
 DOMAIN-SUFFIX,dmm.com
-# > encoreTVB
+# > EncoreTVB
 USER-AGENT,encoreTVB*
 DOMAIN-SUFFIX,encoretvb.com
 DOMAIN,bcbolt446c5271-a.akamaihd.net
@@ -188,7 +180,6 @@ DOMAIN-SUFFIX,ocnttv.com
 DOMAIN-SUFFIX,hulu.com
 DOMAIN-SUFFIX,huluim.com
 DOMAIN-SUFFIX,hulustream.com
-# > Hulu / フールー
 DOMAIN-SUFFIX,happyon.jp
 DOMAIN-SUFFIX,hjholdings.jp
 DOMAIN-SUFFIX,hulu.jp
@@ -237,7 +228,7 @@ DOMAIN-SUFFIX,nflximg.net
 DOMAIN-SUFFIX,nflxso.net
 DOMAIN-SUFFIX,nflxvideo.net
 # GEOIP,NETFLIX,no-resolve
-# > niconico
+# > Niconico
 USER-AGENT,Niconico*
 DOMAIN-SUFFIX,dmc.nico
 DOMAIN-SUFFIX,nicovideo.jp

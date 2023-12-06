@@ -1,4 +1,4 @@
-const version = 'V1.0.27';
+const version = 'V1.0.31';
 var obj = JSON.parse($response.body);
 if (-1 != $request.url.indexOf('valueadded/alimama/splash_screen')) {
   if (obj.data && obj.data.ad)
@@ -10,9 +10,10 @@ if (-1 != $request.url.indexOf('valueadded/alimama/splash_screen')) {
 } else if (-1 != $request.url.indexOf('faas/amap-navigation/main-page'))
   obj.data?.cardList &&
     (obj.data.cardList = Object.values(obj.data.cardList).filter(
-      a => 'LoginCard' == a.dataType
+      a => 'LoginCard' == a.dataType || 'FrequentLocation' == a.dataType
     )),
     obj.data?.pull3?.msgs && (obj.data.pull3.msgs = []),
+    obj.data?.business_position && (obj.data.business_position = []),
     obj.data?.mapBizList && (obj.data.mapBizList = []),
     $done({ body: JSON.stringify(obj) });
 else if (-1 != $request.url.indexOf('profile/index/node'))
@@ -26,7 +27,7 @@ else if (-1 != $request.url.indexOf('new_hotword'))
   obj.data?.header_hotword && (obj.data.header_hotword = []),
     $done({ body: JSON.stringify(obj) });
 else if (-1 != $request.url.indexOf('ws/promotion-web/resource')) {
-  let e = ['icon', 'banner', 'tips', 'popup', 'bubble'];
+  let e = ['icon', 'banner', 'tips', 'popup', 'bubble', 'other'];
   for (let o of e) obj.data?.[o] && (obj.data[o] = []);
   $done({ body: JSON.stringify(obj) });
 } else if (-1 != $request.url.indexOf('ws/msgbox/pull'))
@@ -46,7 +47,13 @@ else if (-1 != $request.url.indexOf('ws/shield/frogserver/aocs')) {
     obj.data?.[t] && (obj.data[t] = { status: 1, version: '', value: '' });
   $done({ body: JSON.stringify(obj) });
 } else if (-1 != $request.url.indexOf('search/nearbyrec_smart')) {
-  let i = ['coupon', 'scene', 'activity', 'commodity_rec'];
+  let i = [
+    'coupon',
+    'scene',
+    'activity',
+    'commodity_rec',
+    'operation_activity'
+  ];
   obj.data &&
     (i.forEach(a => {
       delete obj.data[a];

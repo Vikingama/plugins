@@ -3,32 +3,26 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
-
 # Other files and folders
 .settings/
-
 # Executables
 *.swf
 *.air
 *.ipa
 *.apk
-
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
-
 exampleSite
 node_modules
 resources
 public
 temp
 tmp
-
 .DS_Store
 .hugo_build.lock
 .vscode
 .idea
-
 *.a
 *.cgo1.go
 *.cgo2.c
@@ -38,11 +32,9 @@ tmp
 *.so
 *.test
 *.[568vq]
-
 _cgo_defun.c
 _cgo_export.*
 _cgo_gotypes.go
-
 macbook.conf
 iphone.conf
 macOS.conf

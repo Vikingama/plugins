@@ -6,12 +6,11 @@ DOMAIN,bdtj.tagtic.cn
 DOMAIN,log.mmstat.com
 DOMAIN,sycm.mmstat.com
 # > Google
-DOMAIN-SUFFIX,blog.google // Google Blog
-DOMAIN-SUFFIX,googletraveladservices.com // Google Flights
+DOMAIN-SUFFIX,blog.google
+DOMAIN-SUFFIX,googletraveladservices.com
 DOMAIN,clientservices.googleapis.com
 DOMAIN,dl.google.com
 DOMAIN,dl.l.google.com
-DOMAIN,update.googleapis.com
 DOMAIN,update.googleapis.com
 # > Firebase Cloud Messaging
 DOMAIN,alt1-mtalk.google.com

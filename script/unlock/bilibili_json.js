@@ -1,4 +1,4 @@
-const version = 'V2.0.117';
+const version = 'V2.0.118';
 let body = $response.body;
 if (body) {
   switch (!0) {
@@ -8,7 +8,7 @@ if (body) {
         t.result?.cards?.length &&
           (t.result.cards = t.result.cards.filter(t => 2 != t.type)),
           (body = JSON.stringify(t));
-      } catch (i) {}
+      } catch (I) {}
       break;
     case /^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/skin\?/.test(
       $request.url
@@ -16,7 +16,7 @@ if (body) {
       try {
         let a = JSON.parse(body);
         delete a.data?.common_equip, (body = JSON.stringify(a));
-      } catch (e) {}
+      } catch (E) {}
       break;
     case /^https:\/\/app\.bilibili\.com\/x\/v2\/feed\/index\?/.test(
       $request.url
@@ -41,7 +41,7 @@ if (body) {
             else l.push(o);
           }
         (s.data.items = l), (body = JSON.stringify(s));
-      } catch (d) {}
+      } catch (D) {}
       break;
     case /^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index\/story\?/.test(
       $request.url
@@ -54,7 +54,7 @@ if (body) {
             -1 !== p.card_goto.indexOf('ad') ||
             b.push(p);
         (r.data.items = b), (body = JSON.stringify(r));
-      } catch (c) {}
+      } catch (C) {}
       break;
     case /^https?:\/\/app\.bilibili\.com\/x\/v\d\/account\/teenagers\/status\?/.test(
       $request.url
@@ -62,7 +62,7 @@ if (body) {
       try {
         let n = JSON.parse(body);
         (n.data.teenagers_status = 0), (body = JSON.stringify(n));
-      } catch (y) {}
+      } catch (Y) {}
       break;
     case /^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab/.test(
       $request.url
@@ -140,7 +140,7 @@ if (body) {
           h.data.bottom = m;
         }
         body = JSON.stringify(h);
-      } catch (g) {}
+      } catch (G) {}
       break;
     case /^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/mine/.test(
       $request.url
@@ -149,7 +149,7 @@ if (body) {
         let v = JSON.parse(body),
           $ = new Set([
             396, 397, 398, 399, 407, 410, 402, 404, 425, 426, 427, 428, 430,
-            432, 433, 434, 494, 495, 496, 497, 500, 501
+            432, 433, 434, 494, 495, 496, 497, 500, 501, 2830
           ]);
         v.data.sections_v2.forEach((t, i) => {
           let a = t.items.filter(t => $.has(t.id));
@@ -188,7 +188,7 @@ if (body) {
             (x.data.new_tab_info.outer_list =
               x.data.new_tab_info.outer_list.filter(t => 33 != t.biz_id)),
           (body = JSON.stringify(x));
-      } catch (k) {}
+      } catch (K) {}
       break;
     case /^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity/.test(
       $request.url
@@ -224,7 +224,7 @@ if (body) {
           search_hotword_revision: 2
         }),
           (body = JSON.stringify(j));
-      } catch (q) {}
+      } catch (Q) {}
       break;
     case /https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\?/.test(
       $request.url
@@ -237,7 +237,7 @@ if (body) {
           (E.data.vip.vip_pay_type = 1),
           (E.data.vip.due_date = 466982416e4)),
           (body = JSON.stringify(E));
-      } catch (z) {}
+      } catch (Z) {}
       break;
     case /pgc\/page\/(bangumi|cinema\/tab\?)/.test($request.url):
       try {

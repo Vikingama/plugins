@@ -1285,10 +1285,7 @@ function MagicJS(e = 'MagicJS', t = 'INFO') {
       CRITICAL: '❌ ',
       NONE: ''
     };
-    const t = (e, t = 'INFO') => {
-      if (!(i[n] < i[t.toUpperCase()]))
-        console.log(`[${t}] [${r}]\n${o[t.toUpperCase()]}${e}\n`);
-    };
+    const t = (e, t = 'INFO') => {};
     const s = e => {
       n = e;
     };

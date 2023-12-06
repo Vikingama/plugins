@@ -1,4 +1,4 @@
-const version = 'V2.0.111';
+const version = 'V2.0.120';
 const mainConfig = {
     isDebug: !1,
     author: 'ddgksf2013',
@@ -89,7 +89,9 @@ const mainConfig = {
     'a=get_coopen_ads': 'removeIntlOpenAds',
     'php?a=search_topic': 'removeSearchTopic',
     'v1/ad/realtime': 'removeRealtimeAd',
-    'v1/ad/preload': 'removeAdPreload'
+    'v1/ad/preload': 'removeAdPreload',
+    'php?a=open_app': 'removeAdBanner',
+    'groups/allgroups': 'removeGroup'
   };
 function getModifyMethod(e) {
   for (let t of modifyCardsUrls) if (e.indexOf(t) > -1) return 'removeCards';
@@ -100,6 +102,22 @@ function getModifyMethod(e) {
 }
 function removeRealtimeAd(e) {
   return delete e.ads, (e.code = 4016), e;
+}
+function removeGroup(e) {
+  return (
+    e.pageDatas &&
+      (e.pageDatas = Object.values(e.pageDatas).filter(
+        e => 'homeExtend' != e.pageDataType
+      )),
+    e
+  );
+}
+function removeAdBanner(e) {
+  return (
+    e.data.close_ad_setting && delete e.data.close_ad_setting,
+    e.data.detail_banner_ad && (e.data.detail_banner_ad = []),
+    e
+  );
 }
 function removeAdPreload(e) {
   if (!e.ads) return e;
@@ -148,7 +166,7 @@ function modifiedUserCenter(e) {
   );
 }
 function removeTopics(e) {
-  return e.data && (e.data.order = ['search_topic', 'native_content']), e;
+  return e.data && (e.data.order = ['search_topic']), e;
 }
 function isAd(e) {
   return (
@@ -179,7 +197,7 @@ function removeMainTab(e) {
           ? t.push(o)
           : -1 != JSON.stringify(o.items).indexOf('profile_top') && t.push(o)
         : t.push(o));
-  return (e.items = t), undefined, e;
+  return (e.items = t), log('removeMainTab success'), e;
 }
 function removeMain(e) {
   if (
@@ -220,7 +238,7 @@ function removeMain(e) {
         continue;
       t.push(o);
     }
-  return (e.items = t), undefined, e;
+  return (e.items = t), log('removeMain success'), e;
 }
 function topicHandler(e) {
   let t = e.cards;
@@ -261,14 +279,14 @@ function topicHandler(e) {
     }
     a && o.push(i);
   }
-  return (e.cards = o), undefined, e;
+  return (e.cards = o), log('topicHandler success'), e;
 }
 function removeSearchMain(e) {
   let t = e.channelInfo.channels;
   if (!t) return e;
   let o = [];
   for (let i of t) i.payload && (removeSearch(i.payload), o.push(i));
-  return (e.channelInfo.channels = o), undefined, e;
+  return (e.channelInfo.channels = o), log('remove_search main success'), e;
 }
 function checkSearchWindow(e) {
   return (
@@ -287,21 +305,21 @@ function removeSearch(e) {
   if (!e.items) return e;
   let t = [];
   for (let o of e.items)
-    if ('feed' == o.category)
-      isAd(o.data) ||
+    'feed' == o.category
+      ? isAd(o.data) ||
         (o.data?.page_info?.video_limit && delete o.data.page_info.video_limit,
-        t.push(o));
-    else {
-      if ('group' == o.category) continue;
-      checkSearchWindow(o) || t.push(o);
-    }
+        t.push(o))
+      : 'group' == o.category
+      ? ((o.items = o.items.filter(e => e.data?.card_type === 17)),
+        o.items.length > 0 && t.push(o))
+      : checkSearchWindow(o) || t.push(o);
   return (
     (e.items = t),
     e.loadedInfo &&
       ((e.loadedInfo.searchBarContent = []),
       e.loadedInfo.headerBack &&
         (e.loadedInfo.headerBack.channelStyleMap = {})),
-    undefined,
+    log('remove_search success'),
     e
   );
 }
@@ -333,11 +351,9 @@ function removeCards(e) {
   if ((e.hotwords && (e.hotwords = []), !e.cards)) return;
   let t = [];
   for (let o of e.cards) {
-    if (
-      e.cardlistInfo?.containerid == '232082type=1' &&
-      (17 == o.card_type || 58 == o.card_type || 11 == o.card_type)
-    )
-      continue;
+    e.cardlistInfo?.containerid == '232082type=1' &&
+      (17 == o.card_type || 58 == o.card_type || 11 == o.card_type) &&
+      (o = { card_type: o.card_type + 1 });
     let i = o.card_group;
     if (i && i.length > 0) {
       let a = [];
@@ -410,6 +426,7 @@ function itemExtendHandler(e) {
   }
   mainConfig.removeFollow && e.follow_data && (e.follow_data = null),
     mainConfig.removeRewardItem && e.reward_info && (e.reward_info = null),
+    e.head_cards && delete e.head_cards,
     e.page_alerts && (e.page_alerts = null);
   try {
     e.trend.extra_struct.extBtnInfo.btn_picurl.indexOf(
@@ -439,7 +456,7 @@ function updateFollowOrder(e) {
           '231093_-_selfrecomm',
           '231093_-_selffollowed'
         )),
-          undefined;
+          log('updateFollowOrder success');
         return;
       }
   } catch (i) {}
@@ -457,7 +474,7 @@ function updateProfileSkin(e, t) {
             (a.image.iconUrl = o[i++]),
             a.dot && (a.dot = []);
         } catch (r) {}
-    undefined;
+    log('updateProfileSkin success');
   } catch (n) {}
 }
 function removeHome(e) {
@@ -495,10 +512,10 @@ function removeHome(e) {
   return (e.items = t), e;
 }
 function removeCheckin(e) {
-  undefined, (e.show = 0);
+  log('remove tab1 签到'), (e.show = 0);
 }
 function removeMediaHomelist(e) {
-  mainConfig.removeLiveMedia && (undefined, (e.data = {}));
+  mainConfig.removeLiveMedia && (log('remove 首页直播'), (e.data = {}));
 }
 function removeComments(e) {
   let t = ['广告', '廣告', '相关内容', '推荐', '热推', '推薦'],
@@ -509,18 +526,20 @@ function removeComments(e) {
     let r = a.adType || '';
     -1 == t.indexOf(r) && 6 != a.type && i.push(a);
   }
-  undefined, (e.datas = i);
+  log('remove 评论区相关和推荐内容'),
+    (e.datas = i),
+    e.tip_msg && delete e.tip_msg;
 }
 function containerHandler(e) {
   mainConfig.removeInterestFriendInTopic &&
     '超话里的好友' === e.card_type_name &&
-    (undefined, (e.card_group = [])),
+    (log('remove 超话里的好友'), (e.card_group = [])),
     mainConfig.removeInterestTopic &&
       e.itemid &&
       (e.itemid.indexOf('infeed_may_interest_in') > -1
-        ? (undefined, (e.card_group = []))
+        ? (log('remove 感兴趣的超话'), (e.card_group = []))
         : e.itemid.indexOf('infeed_friends_recommend') > -1 &&
-          (undefined, (e.card_group = [])));
+          (log('remove 超话好友关注'), (e.card_group = [])));
 }
 function userHandler(e) {
   if (((e = removeMainTab(e)), !mainConfig.removeInterestUser || !e.items))
@@ -534,7 +553,7 @@ function userHandler(e) {
       } catch (a) {}
     i && (o.data?.common_struct && delete o.data.common_struct, t.push(o));
   }
-  return (e.items = t), undefined, e;
+  return (e.items = t), log('removeMain sub success'), e;
 }
 function nextVideoHandler(e) {
   if (!e.statuses) return e;
@@ -545,7 +564,7 @@ function nextVideoHandler(e) {
       for (let a of i) o.video_info?.[a] && delete o.video_info[a];
       t.push(o);
     }
-  return (e.statuses = t), undefined, e;
+  return (e.statuses = t), log('removeMainTab Success'), e;
 }
 function tabSkinHandler(e) {
   try {
@@ -553,7 +572,10 @@ function tabSkinHandler(e) {
     if (((e.data.canUse = 1), !t || !mainConfig.tabIconPath || t < 100)) return;
     let o = e.data.list;
     for (let i of o) (i.version = t), (i.downloadlink = mainConfig.tabIconPath);
-  } catch (a) {}
+    log('tabSkinHandler success');
+  } catch (a) {
+    log('tabSkinHandler fail');
+  }
 }
 function skinPreviewHandler(e) {
   e.data.skin_info.status = 1;
@@ -584,10 +606,14 @@ function removePhpScreenAds(e) {
       (t.endtime = '2029-12-30 23:59:59');
   return e;
 }
+function log(e) {
+  mainConfig.isDebug && console.log(e);
+}
 var body = $response.body,
   url = $request.url;
 let method = getModifyMethod(url);
 if (method) {
+  log(method);
   var func = eval(method);
   let data = JSON.parse(body.match(/\{.*\}/)[0]);
   new func(data),

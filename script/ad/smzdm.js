@@ -50,7 +50,6 @@ let magicJS = MagicJS(scriptName, 'INFO');
               component.push(element);
             }
           });
-
           obj.data.component = component;
           response = { body: JSON.stringify(obj) };
         } catch (err) {

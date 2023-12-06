@@ -6,7 +6,6 @@ runs()
       body: JSON.stringify(rsp)
     })
   );
-
 async function runs() {
   if (req.url.includes('token.php')) {
     if (rsp.ad) {

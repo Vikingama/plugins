@@ -5715,7 +5715,6 @@ let body;
 if (url.includes('frs/page')) {
   let frsPageResIdlType = tiebaRoot.lookupType('model.frs.FrsPageResIdl');
   let frsPageResIdlObj = frsPageResIdlType.decode(binaryBody);
-
   frsPageResIdlObj.data.threadList = removeLive(
     frsPageResIdlObj.data.threadList
   );

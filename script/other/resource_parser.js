@@ -1,4 +1,3 @@
-const subtag = typeof $resource.tag != 'undefined' ? $resource.tag : '';
 let [link0, content0, subinfo] = [
   $resource.link,
   $resource.content,
@@ -9,12 +8,11 @@ let version =
     ? Number($environment.version.split('build')[1])
     : 0;
 let Perror = 0;
-
+const subtag = typeof $resource.tag != 'undefined' ? $resource.tag : '';
 content0 =
   content0.indexOf('DOCTYPE html') != -1 && link0.indexOf('github.com') != -1
     ? ToRaw(content0)
     : content0;
-
 var para = /^(http|https)\:\/\//.test(link0) ? link0 : content0.split('\n')[0];
 var para1 = para
   .slice(para.indexOf('#') + 1)
@@ -30,7 +28,7 @@ var Pinfo =
 var ntf_flow = 0;
 const Base64 = new Base64Code();
 const escapeRegExp = str => str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-const link1 = link0.split('#')[0];
+var link1 = link0.split('#')[0];
 const qxpng =
   'https://raw.githubusercontent.com/crossutility/Quantumult-X/master/quantumult-x.png';
 const subinfo_link = {
@@ -54,20 +52,19 @@ const update_link = {
   'open-url': 'https://apps.apple.com/us/app/quantumult-x/id1443988620',
   'media-url': qxpng
 };
+const plink0 = { 'open-url': link0, 'media-url': qxpng };
 const ADDRes = `quantumult-x:///add-resource?remote-resource=url-encoded-json`;
+var RLink0 = {
+  filter_remote: [],
+  rewrite_remote: [],
+  server_remote: []
+};
 const Field = {
   filter: 'filter_remote',
   rewrite: 'rewrite_remote',
   server: 'server_remote'
 };
-const RLink0 = {
-  filter_remote: [],
-  rewrite_remote: [],
-  server_remote: []
-};
-
 SubFlow();
-
 var Pin0 =
   mark0 && para1.indexOf('in=') != -1
     ? para1.split('in=')[1].split('&')[0].split('+').map(decodeURIComponent)
@@ -314,7 +311,6 @@ var ProfileInfo = {
   filter: '',
   rewrite: ''
 };
-
 function VCheck(cnt) {
   cnts = cnt
     .split('\n')
@@ -347,7 +343,6 @@ function Profile_Handle() {
     .replace('rremoteposition', rrm);
   ADDres = ADDres.replace('url-encoded-json', encodeURIComponent(RLink));
 }
-
 var Finfo = {};
 if (Pflow != 0) {
   Pflow = Pflow.split(':');
@@ -623,9 +618,8 @@ patn[3] = ['⓪', '⓵', '⓶', '⓷', '⓸', '⓹', '⓺', '⓼', '⓻', '⓽']
 patn[4] = ['𝟘', '𝟙', '𝟚', '𝟛', '𝟜', '𝟝', '𝟞', '𝟟', '𝟠', '𝟡'];
 patn[5] = ['⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'];
 patn[6] = ['₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉'];
-patn[7] = ['𝟎', '𝟏', '𝟐', '𝟑', '𝟒', '𝟓', '𝟔', '𝟖', '𝟗'];
+patn[7] = ['𝟎', '𝟏', '𝟐', '𝟑', '𝟒', '𝟓', '𝟔', '𝟳', '𝟖', '𝟗'];
 patn[8] = ['𝟶', '𝟷', '𝟸', '𝟹', '𝟺', '𝟻', '𝟼', '𝟽', '𝟾', '𝟿'];
-
 const getValue = (fn, defaultVaule) => {
   try {
     return fn();
@@ -635,13 +629,12 @@ const getValue = (fn, defaultVaule) => {
 };
 var type0 = '';
 var flag = 1;
-
 function Parser() {
   type0 = Type_Check(content0);
   if (type0 != 'web' && type0 != 'wrong-field' && type0 != 'JS-0') {
     try {
       total = ResourceParse();
-    } catch (err) {}
+    } catch (error) {}
   } else if (type0 == 'wrong-field') {
     if (version >= 670 && typec != '') {
       RLink0[Field[typec]].push(
@@ -660,7 +653,7 @@ if (typeof $resource !== 'undefined' && PProfile == 0) {
 } else if (PProfile != 0) {
   try {
     Profile_Handle();
-  } catch (err) {}
+  } catch (error) {}
   openlink = { 'open-url': ADDres };
   total = ProfileInfo[typeQ];
   $done({ content: total });
@@ -668,7 +661,7 @@ if (typeof $resource !== 'undefined' && PProfile == 0) {
 function ParseUnknown(cnt) {
   try {
     cnt = JSON.parse(cnt);
-  } catch (err) {}
+  } catch (error) {}
 }
 function ResourceParse() {
   if (type0 == 'Subs-B64Encode') {
@@ -794,9 +787,6 @@ function ResourceParse() {
       Prn = Prrname;
       total = total.map(Rename);
     }
-    if (Pemoji) {
-      total = emoji_handle(total, Pemoji);
-    }
     if (Pregdel) {
       delreg = Pregdel;
       total = total.map(DelReg);
@@ -810,6 +800,9 @@ function ResourceParse() {
     if (Prname) {
       Prn = Prname;
       total = total.map(Rename);
+    }
+    if (Pemoji) {
+      total = emoji_handle(total, Pemoji);
     }
     if (total.length > 0) {
       if (Psuffix == 1 || Psuffix == -1) {
@@ -857,37 +850,6 @@ function ResourceParse() {
 function SubFlow() {
   if (Pinfo == 1 && subinfo) {
     var sinfo = subinfo.replace(/ /g, '').toLowerCase();
-    var total =
-      '总流量：' +
-      (parseFloat(sinfo.split('total=')[1].split(',')[0]) / 1024 ** 3).toFixed(
-        2
-      ) +
-      'GB';
-    var usd =
-      '已用流量：' +
-      (
-        (parseFloat(
-          sinfo.indexOf('upload') != -1
-            ? sinfo.split('upload=')[1].split(',')[0]
-            : '0'
-        ) +
-          parseFloat(sinfo.split('download=')[1].split(',')[0])) /
-        1024 ** 3
-      ).toFixed(2) +
-      'GB';
-    var left =
-      '剩余流量：' +
-      (
-        parseFloat(sinfo.split('total=')[1].split(',')[0]) / 1024 ** 3 -
-        (parseFloat(
-          sinfo.indexOf('upload') != -1
-            ? sinfo.split('upload=')[1].split(',')[0]
-            : '0'
-        ) +
-          parseFloat(sinfo.split('download=')[1].split(',')[0])) /
-          1024 ** 3
-      ).toFixed(2) +
-      'GB';
     if (sinfo.indexOf('expire=') != -1) {
       var epr = new Date(
         parseFloat(sinfo.split('expire=')[1].split(',')[0]) * 1000
@@ -916,8 +878,8 @@ function flowcheck(cnt) {
       exptime = nm;
     }
   }
-  flow = flow ? flow : '该订阅未返回任何流量信息';
-  exptime = exptime ? exptime : '该订阅未返回套餐时间信息';
+  flow = flow ? flow : '⚠️ 该订阅未返回任何流量信息';
+  exptime = exptime ? exptime : '⚠️ 该订阅未返回套餐时间信息';
 }
 function RegCheck(total, typen, paraname, regpara) {
   if (total.length == 0) {
@@ -1179,7 +1141,6 @@ function TagCheck_QX(content) {
   var Olist = content.map(item => item.trim());
   var [Nlist, nmlist] = [[], []];
   var [nulllist, duplist] = [[], []];
-  var no = 0;
   for (var i = 0; i < Olist.length; i++) {
     var item = Olist[i] ? Olist[i] : '';
     typefix['shadowsocks'] =
@@ -1732,12 +1693,15 @@ function SCP2QX(subs) {
         } else if (subs[i].indexOf(' _ reject') != -1) {
           rw = subs[i].split(' ')[0] + ' url reject-200';
           nrw.push(rw);
-        } else if (subs[i].indexOf(' - reject') != -1) {
-          rw = subs[i].replace(' - ', ' url ');
+        } else if (
+          subs[i].indexOf(' - reject') != -1 ||
+          subs[i].indexOf(' - REJECT') != -1
+        ) {
+          rw = subs[i].replace(' - ', ' url ').toLowerCase();
           nrw.push(rw);
         } else if (
           subs[i].split(' ').length == 2 &&
-          /\s(reject)$/.test(subs[i])
+          (/\s(reject)$/.test(subs[i]) || /\s(reject\-)/.test(subs[i]))
         ) {
           rw = subs[i].replace(' reject', ' url reject');
           nrw.push(rw);
@@ -1777,7 +1741,7 @@ function SCP2QX(subs) {
       } else if (RewriteK.some(RewriteCheck)) {
         nrw.push(subs[i]);
       }
-    } catch (err) {}
+    } catch (error) {}
   }
   return nrw;
 }
@@ -1830,11 +1794,6 @@ function Rewrite_Filter(subs, Pin, Pout, Preg, Pregout) {
     no1write = Nlist.length <= 10 ? emojino[Nlist.length] : Nlist.length;
     if (Pin0 && no1write != ' 0️⃣ ') {
     } else if (dwrite.length > 0) {
-    }
-  }
-  if (Nlist.length == 0) {
-    if (Pin0 || Pout0 || Phin0 || Phout0 || Pregout || Preg) {
-    } else {
     }
   }
   if (Preg) {
@@ -1923,6 +1882,7 @@ function Rule_Handle(subs, Pout, Pin) {
       const exclude = item => cc.indexOf(item) != -1;
       const CommentCheck = item => cc.toLowerCase().indexOf(item) == 0;
       if (Tout.some(exclude) && !RuleK.some(CommentCheck)) {
+        dlist.push('-' + Rule_Policy(cc));
       } else if (!RuleK.some(CommentCheck) && cc) {
         dd = Rule_Policy(cc);
         if (Tin != '' && Tin != null) {
@@ -1951,9 +1911,6 @@ function Rule_Handle(subs, Pout, Pin) {
         }
       }
     }
-    if (nlist.length > 0) {
-    } else {
-    }
     nlist = Phide == 1 ? nlist : [...dlist, ...nlist];
   } else {
     nlist = cnt.map(Rule_Policy);
@@ -1977,7 +1934,10 @@ function Rule_Handle(subs, Pout, Pin) {
         : nlist.filter(Boolean).map(item => item + ', via-interface=' + Pvia);
   }
   nlist = nlist.map(item =>
-    item.replace(/:\d*\s*,/g, ',').replace(/(\'|\")/g, '')
+    item
+      .replace(/:\d*\s*,/g, ',')
+      .replace(/(\'|\")/g, '')
+      .replace(/(\-suffix|\-SUFFIX)\s*\,\s*\./g, '$1, ')
   );
   return nlist;
 }
@@ -2637,14 +2597,20 @@ function Fobfs(jsonl, Pcert0, PTls13) {
       jsonl.host && jsonl.host != '' ? 'obfs-host=' + jsonl.host + ', ' : '';
     obfsi.push(obfs0, host0 + uri0);
     return obfsi.join(', ');
-  } else if (jsonl.tls == 'tls' && jsonl.net == 'tcp') {
+  } else if (
+    jsonl.tls == 'tls' &&
+    (jsonl.net == 'tcp' || jsonl.net == 'none')
+  ) {
     obfs0 = 'obfs=over-tls, ' + tcert + ', ' + tls13;
     uri0 = jsonl.path && jsonl.path != '' ? 'obfs-uri=' + jsonl.path : '';
     uri0 = uri0.indexOf('uri=/') != -1 ? uri0 : uri0.replace('uri=', 'uri=/');
     host0 = jsonl.host && jsonl.host != '' ? ', obfs-host=' + jsonl.host : '';
     obfsi.push(obfs0 + host0);
     return obfsi.join(', ');
-  } else if (jsonl.net == 'tcp' && jsonl.type == 'http') {
+  } else if (
+    (jsonl.net == 'tcp' || jsonl.net == 'none') &&
+    jsonl.type == 'http'
+  ) {
     obfs0 = 'obfs=http';
     uri0 =
       jsonl.path && jsonl.path != '' ? 'obfs-uri=' + jsonl.path : 'obfs-uri=/';
@@ -2653,11 +2619,12 @@ function Fobfs(jsonl, Pcert0, PTls13) {
       jsonl.host && jsonl.host != '' ? 'obfs-host=' + jsonl.host + ', ' : '';
     obfsi.push(obfs0, host0 + uri0);
     return obfsi.join(', ');
-  } else if (jsonl.net != 'tcp') {
+  } else if (jsonl.net != 'tcp' && jsonl.net != 'none') {
     Perror = 1;
     return 'NOT-SUPPORTTED';
   } else if (
-    jsonl.net == 'tcp' &&
+    (jsonl.net == 'tcp' || jsonl.net == 'none') &&
+    jsonl.type != undefined &&
     jsonl.type != 'none' &&
     jsonl.type != '' &&
     jsonl.type != 'vmess'
@@ -2723,10 +2690,6 @@ function Filter(servers, Pin, Pout) {
     } else {
       Delist.push(servers[i].replace(/ /g, '').split('tag=')[1]);
     }
-  }
-  var no1 = Nlist.length <= 10 ? emojino[Nlist.length] : Nlist.length;
-  if (Pntf0 == 1 && Delist.length >= 1) {
-  } else if (no1 == 0 || no1 == null) {
   }
   return Nlist;
 }
@@ -2906,7 +2869,8 @@ function joinx(total, item) {
 function SS2QX(subs, Pudp, Ptfo) {
   var nssr = [];
   var cnt = subs.split('ss://')[1];
-  if (cnt.split(':').length <= 6) {
+  QX = '';
+  if (cnt.split(':').length <= 10) {
     type = 'shadowsocks=';
     let cntt = cnt.split('#')[0];
     if (cntt.indexOf('@') != -1 && cntt.indexOf(':') != -1) {
@@ -2996,8 +2960,8 @@ function SS2QX(subs, Pudp, Ptfo) {
     ptfo = Ptfo == 1 ? 'fast-open=true' : 'fast-open=false';
     nssr.push(type + ip, pwd, mtd + obfs + obfshost, pudp, ptfo, tag);
     QX = nssr.join(', ');
-    return QX;
   }
+  return QX;
 }
 function SSD2QX(subs, Pudp, Ptfo) {
   var j = 0;
@@ -3092,7 +3056,7 @@ function QXFix(cntf) {
     }
     cntii = cntii + tag + tagfix;
     return cntii;
-  } catch (err) {}
+  } catch (error) {}
   return '';
 }
 function isQuanX(content) {
@@ -3143,8 +3107,9 @@ function isQuanXRewrite(content) {
       } else if (
         (cnti.indexOf(' 302') != -1 ||
           cnti.indexOf(' 307') != -1 ||
-          /\s(_|-)\sreject/.test(cnti) ||
-          /\sreject$/.test(cnti)) &&
+          /\s(_|-)\s(reject|REJECT)/.test(cnti) ||
+          /\sreject$/.test(cnti) ||
+          /\sreject-/.test(cnti)) &&
         cnti.indexOf(' url ') == -1 &&
         cnti.indexOf(' url-and-header ') == -1
       ) {
@@ -3292,11 +3257,9 @@ function Rename(str) {
         var rn = escapeRegExp(oname);
         name = name.replace(new RegExp(rn, 'gmi'), nname);
       } else if (oname && nname == '') {
+        var nemoji = emoji_del(name);
         if ((Pemoji == 1 || Pemoji == 2) && Prname) {
-          name = name.replace(
-            name.split(' ')[0] + ' ',
-            name.split(' ')[0] + ' ' + oname
-          );
+          name = oname + nemoji;
         } else {
           name = oname + name.trim();
         }
@@ -3353,7 +3316,13 @@ function get_emoji(emojip, sname) {
       'traffic'
     ],
     '🇴🇲': ['阿曼', ' OM '],
-    '🇦🇩': ['安道尔', 'Andorra'],
+    '🇦🇩': ['安道尔', '安道爾', 'Andorra'],
+    '🇦🇴': ['安哥拉'],
+    '🇦🇫': ['阿富汗'],
+    '🇩🇿': ['阿尔及利亚', '阿爾及利亞'],
+    '🇫🇴': ['法羅群島', '法罗群岛'],
+    '🇧🇲': ['百慕大'],
+    '🇦🇽': ['奧蘭群島', '奥兰群岛'],
     '🇦🇿': ['阿塞拜疆', 'Azerbaijan'],
     '🇦🇹': ['奥地利', '奧地利', 'Austria', '维也纳'],
     '🇦🇺': [
@@ -3376,7 +3345,11 @@ function get_emoji(emojip, sname) {
     '🇵🇰': ['巴基斯坦', 'Pakistan', 'PAKISTAN'],
     '🇧🇭': ['巴林', 'Bahrain'],
     '🇵🇾': ['巴拉圭', 'Paraguay'],
+    '🇧🇧': ['巴巴多斯'],
+    '🇬🇶': ['赤道几内亚', '赤道幾內亞'],
+    '🇹🇱': ['东帝汶', '東帝汶'],
     '🇰🇭': ['柬埔寨', 'Cambodia'],
+    '🇿🇼': ['津巴布韦', '津巴布韋'],
     '🇺🇦': ['烏克蘭', '乌克兰', 'Ukraine'],
     '🇺🇿': ['乌兹别克斯坦', '烏茲別克斯坦', 'Uzbekistan'],
     '🇭🇷': ['克罗地亚', 'HR', '克羅地亞', 'Croatia'],
@@ -3401,7 +3374,7 @@ function get_emoji(emojip, sname) {
     '🇸🇮': ['斯洛文尼亚', '斯洛文尼亞', 'Slovenia'],
     '🇦🇲': ['亚美尼亚', '亞美尼亞', 'Armenia'],
     '🇷🇸': ['RS ', 'RS_', '塞尔维亚', '塞爾維亞', 'Seville', 'Sevilla'],
-    '🇲🇩': ['摩爾多瓦', 'MD', '摩尔多瓦', 'Moldova'],
+    '🇲🇩': ['摩爾多瓦', ' MD-', '摩尔多瓦', 'Moldova', ' MD '],
     '🇩🇪': [
       'DE ',
       'DE-',
@@ -3424,11 +3397,21 @@ function get_emoji(emojip, sname) {
     '🇫🇷': ['FR', 'France', '法国', '法國', '巴黎'],
     '🇷🇪': ['留尼汪', '留尼旺', 'Réunion', 'Reunion'],
     '🇨🇼': ['库拉索', '庫拉索', 'Curaçao'],
-    '🇬🇧': ['UK', 'GB ', 'England', 'United Kingdom', '英国', '伦敦', '英'],
+    '🇬🇧': [
+      'UK',
+      'GB ',
+      'England',
+      'United Kingdom',
+      '英国',
+      '伦敦',
+      '英',
+      'Britain'
+    ],
     '🇲🇴': ['MO', 'Macao', 'Macau', 'MAC', '澳门', '澳門', 'CTM'],
     '🇰🇿': ['哈萨克斯坦', '哈薩克斯坦', 'Kazakhstan'],
     '🇱🇦': ['老挝', '老挝', 'Laos'],
     '🇭🇺': ['匈牙利', 'Hungary'],
+    '🇭🇳': ['洪都拉斯'],
     '🇱🇹': ['立陶宛', 'Lithuania'],
     '🇱🇰': ['斯里兰卡', '斯里蘭卡', 'Sri Lanka'],
     '🇧🇾': [
@@ -3522,10 +3505,10 @@ function get_emoji(emojip, sname) {
     '🇮🇱': ['Israel', '以色列'],
     '🇮🇳': ['India', 'IND', 'INDIA', '印度', '孟买', 'Mumbai', 'IN '],
     '🇮🇸': ['IS', 'ISL', '冰岛', '冰島', 'Iceland'],
-    '🇰🇵': ['KP', '朝鲜', 'North Korea'],
+    '🇰🇵': ['KP', '朝鲜', 'North Korea', '朝鮮'],
     '🇰🇷': ['KR', 'Korea', 'KOR', '韩国', '首尔', '韩', '韓', '春川'],
-    '🇬🇭': ['加纳', 'Ghana'],
-    '🇱🇺': ['卢森堡', 'LU ', 'Luxembourg'],
+    '🇬🇭': ['加纳', 'Ghana', '迦納'],
+    '🇱🇺': ['卢森堡', '盧森堡', 'LU ', 'Luxembourg'],
     '🇱🇻': ['Latvia', 'Latvija', '拉脱维亚'],
     '🇧🇩': ['孟加拉', 'Bengal'],
     '🇲🇽️': [' MEX', 'MX', '墨西哥', 'Mexico', 'MEXICO'],
@@ -3541,10 +3524,11 @@ function get_emoji(emojip, sname) {
       '馬來西亞',
       '吉隆坡'
     ],
-    '🇲🇲': ['缅甸'],
+    '🇲🇲': ['缅甸', '緬甸'],
+    '🇳🇮': ['尼加拉瓜'],
     '🇳🇱': [' NL', 'Netherlands', '荷兰', '荷蘭', '尼德蘭', '阿姆斯特丹'],
     '🇵🇭': [' PH', 'Philippines', '菲律宾', '菲律賓'],
-    '🇷🇴': [' RO ', '罗马尼亚', 'Rumania'],
+    '🇷🇴': [' RO ', '罗马尼亚', 'Rumania', '羅馬尼亞'],
     '🇸🇦': ['沙特', '利雅得', 'Saudi Arabia', 'Saudi'],
     '🇸🇪': ['SE', 'Sweden', '瑞典'],
     '🇹🇭': [' TH', 'Thailand', '泰国', '泰國', '曼谷'],
@@ -3552,7 +3536,7 @@ function get_emoji(emojip, sname) {
     '🇻🇳': ['VN', '越南', '胡志明市', 'Vietnam'],
     '🇮🇹': ['Italy', ' IT ', 'Nachash', '意大利', '米兰', '義大利'],
     '🇿🇦': ['South Africa', '南非', 'Johannesburg'],
-    '🇦🇪': ['United Arab Emirates', '阿联酋', 'AE ', '迪拜', 'Dubai'],
+    '🇦🇪': ['United Arab Emirates', '阿联酋', 'AE ', '迪拜', '阿聯酋', 'Dubai'],
     '🇧🇷': ['BR', 'Brazil', '巴西', '圣保罗'],
     '🇯🇵': [
       'JP',
@@ -3576,7 +3560,7 @@ function get_emoji(emojip, sname) {
       '广日',
       'Tokyo'
     ],
-    '🇦🇷': ['AR', 'Argentina', '阿根廷'],
+    '🇦🇷': ['AR ', 'Argentina', '阿根廷', 'AR-'],
     '🇳🇴': ['Norway', '挪威', 'NO'],
     '🇵🇱': [' PL', 'POL', '波兰', '波蘭', 'Poland'],
     '🇨🇱': ['智利', 'Chile', 'CHILE'],
@@ -3587,33 +3571,33 @@ function get_emoji(emojip, sname) {
     '🇵🇹': ['葡萄牙', 'Portugal'],
     '🇲🇳': ['蒙古', 'Mongolia'],
     '🇵🇪': ['秘鲁', '祕魯', 'Peru'],
-    '🇨🇴': ['哥伦比亚', 'Colombia'],
-    '🇪🇪': ['爱沙尼亚', 'Estonia'],
-    '🇱🇾': ['利比亚', 'Libya'],
+    '🇨🇴': ['哥伦比亚', '哥倫比亞', 'Colombia'],
+    '🇪🇪': ['爱沙尼亚', '愛沙尼亞', 'Estonia'],
+    '🇱🇾': ['利比亚', '利比亞', 'Libya'],
     '🇲🇰': ['马其顿', '馬其頓', 'Macedonia'],
-    '🇲🇹': ['马耳他', 'Malta'],
+    '🇲🇹': ['马耳他', '馬其他', 'Malta'],
     '🇻🇪': ['委内瑞拉', 'Venezuela'],
     '🇧🇦': ['波黑共和国', '波黑', 'Bosnia and Herzegovina'],
     '🇬🇪': ['格魯吉亞', '格鲁吉亚', 'Georgia'],
     '🇦🇱': ['阿爾巴尼亞', '阿尔巴尼亚', 'Albania'],
     '🇨🇾': ['CY', '塞浦路斯', 'Cyprus'],
-    '🇨🇷': ['哥斯达黎加', 'Costa Rica'],
+    '🇨🇷': ['哥斯达黎加', '哥斯達尼加', 'Costa Rica'],
     '🇹🇳': ['突尼斯', 'Tunisia'],
-    '🇻🇦': ['梵蒂冈'],
-    '🇷🇼': ['卢旺达'],
+    '🇻🇦': ['梵蒂冈', '梵蒂岡'],
+    '🇷🇼': ['卢旺达', '盧旺達'],
     '🇵🇦': ['巴拿马', '巴拿馬', 'Panama'],
     '🇮🇷': ['伊朗', 'Iran'],
     '🇯🇴': ['约旦', '約旦', 'Jordan'],
     '🇺🇾': ['乌拉圭', '烏拉圭', 'Uruguay'],
     '🇰🇪': ['肯尼亚', '肯尼亞', 'Kenya'],
     '🇰🇬': ['吉尔吉斯坦', '吉尔吉斯斯坦', 'Kyrghyzstan'],
-    '🇳🇵': ['尼泊尔', 'Nepal'],
+    '🇳🇵': ['尼泊尔', '尼泊爾', 'Nepal'],
     '🇽🇰': ['科索沃', 'Kosovo'],
     '🇲🇦': ['摩洛哥', 'Morocco'],
-    '🇪🇨': ['厄瓜多尔', 'EC', 'Ecuador'],
+    '🇪🇨': ['厄瓜多尔', '厄瓜多爾', 'EC', 'Ecuador'],
     '🇲🇺': ['毛里求斯', 'Mauritius'],
     '🇵🇷': ['波多黎各', 'PR ', 'PR-', 'Puerto Rico'],
-    '🇬🇹': ['危地马拉', ' GT '],
+    '🇬🇹': ['危地马拉', '危地馬拉', ' GT '],
     '🇭🇰': [
       'HK',
       'Hongkong',
@@ -3651,9 +3635,28 @@ function get_emoji(emojip, sname) {
       '镇江',
       'back'
     ],
-    '🇬🇺': ['关岛'],
+    '🇨🇺': ['古巴'],
+    '🇸🇲': ['圣马力诺', '聖馬利諾'],
+    '🇰🇾': ['开曼群岛', '開曼群島'],
+    '🇫🇯': ['斐济', '斐濟'],
+    '🇬🇱': ['格陵兰', '格陵蘭'],
+    '🇬🇮': ['直布罗陀', '直布羅陀'],
+    '🇲🇪': ['黑山'],
+    '🇱🇮': ['列支敦士登'],
+    '🇬🇺': ['关岛', '關島'],
+    '🇦🇶': ['南极', '南極'],
+    '🇧🇹': ['不丹'],
+    '🇲🇻': ['马尔代夫', '馬爾代夫'],
+    '🇮🇶': ['伊拉克'],
+    '🇸🇨': ['塞舌尔', '塞舌爾'],
+    '🇶🇦': ['卡塔尔', '卡塔爾', ' QA '],
+    '🇸🇾': ['叙利亚', '敘利亞', ' SY '],
     '🇱🇧': ['黎巴嫩', 'LB', 'Lebanon'],
-    '🇧🇳': ['文莱', 'BRN', 'Negara Brunei Darussalam'],
+    '🇧🇳': ['文莱', '汶萊', 'BRN', 'Negara Brunei Darussalam'],
+    '🇨🇻': ['佛得角'],
+    '🇸🇷': ['苏里南', '蘇里南'],
+    '🇲🇨': ['摩纳哥', '摩納哥'],
+    '🇯🇲': ['牙买加', '牙買加 '],
     '🌏': ['亚洲', 'Asia']
   };
   str1 = JSON.stringify(Lmoji);
@@ -3678,11 +3681,11 @@ function get_emoji(emojip, sname) {
   }
   if (flag == 0) {
     return [
-      '' +
+      '🏴‍☠️ ' +
         sname
           .replace(/[\uD83C][\uDDE6-\uDDFF][\uD83C][\uDDE6-\uDDFF]/g, '')
           .trim(),
-      ''
+      '🏴‍☠️'
     ];
   }
 }
@@ -4047,9 +4050,7 @@ function YAMLFix(cnt) {
       .replace(/\,\"/g, ', "')
       .replace(/: {/g, ': {,   ')
       .replace(/, (Host|host|path|mux)/g, ',   $1');
-    cnt = cnt
-      .replace(/{\s*name: /g, '{name: "')
-      .replace(/, server:/g, '", server:');
+    cnt = cnt.replace(/{\s*name: (.*?), (.*?):/g, '{name: "$1", $2:');
     cnt = cnt.replace(/{|}/g, '').replace(/,/g, '\n   ');
   }
   cnt = cnt
@@ -4125,7 +4126,7 @@ function Clash2QX(cnt) {
       node = Pudp0 != 0 ? XUDP(node, Pudp0) : node;
       node = Ptfo0 != 0 ? XTFO(node, Ptfo0) : node;
       nodelist.push(node);
-    } catch (e) {}
+    } catch (error) {}
   }
   return nodelist.join('\n');
 }
@@ -4455,30 +4456,30 @@ function YAML() {
     reference_blocks = [],
     processing_time = 0,
     regex = {
-      regLevel: new RegExp('^([\\s\\-]+)'),
-      invalidLine: new RegExp('^\\-\\-\\-|^\\.\\.\\.|^\\s*#.*|^\\s*$'),
-      dashesString: new RegExp('^\\s*\\"([^\\"]*)\\"\\s*$'),
-      quotesString: new RegExp("^\\s*\\'([^\\']*)\\'\\s*$"),
-      float: new RegExp('^[+-]?[0-9]+\\.[0-9]+(e[+-]?[0-9]+(\\.[0-9]+)?)?$'),
-      integer: new RegExp('^[+-]?[0-9]+$'),
       array: new RegExp('\\[\\s*(.*)\\s*\\]'),
-      map: new RegExp('\\{\\s*(.*)\\s*\\}'),
-      key_value: new RegExp('([a-z0-9_-][ a-z0-9_-]*):( .+)', 'i'),
-      single_key_value: new RegExp('^([a-z0-9_-][ a-z0-9_-]*):( .+?)$', 'i'),
-      key: new RegExp('([a-z0-9_-][ a-z0-9_-]+):( .+)?', 'i'),
-      item: new RegExp('^-\\s+'),
-      trim: new RegExp('^\\s+|\\s+$'),
       comment: new RegExp(
         '([^\\\'\\"#]+([\\\'\\"][^\\\'\\"]*[\\\'\\"])*)*(#.*)?'
-      )
+      ),
+      dashesString: new RegExp('^\\s*\\"([^\\"]*)\\"\\s*$'),
+      float: new RegExp('^[+-]?[0-9]+\\.[0-9]+(e[+-]?[0-9]+(\\.[0-9]+)?)?$'),
+      integer: new RegExp('^[+-]?[0-9]+$'),
+      invalidLine: new RegExp('^\\-\\-\\-|^\\.\\.\\.|^\\s*#.*|^\\s*$'),
+      item: new RegExp('^-\\s+'),
+      key_value: new RegExp('([a-z0-9_-][ a-z0-9_-]*):( .+)', 'i'),
+      key: new RegExp('([a-z0-9_-][ a-z0-9_-]+):( .+)?', 'i'),
+      map: new RegExp('\\{\\s*(.*)\\s*\\}'),
+      quotesString: new RegExp("^\\s*\\'([^\\']*)\\'\\s*$"),
+      regLevel: new RegExp('^([\\s\\-]+)'),
+      single_key_value: new RegExp('^([a-z0-9_-][ a-z0-9_-]*):( .+?)$', 'i'),
+      trim: new RegExp('^\\s+|\\s+$')
     };
   function Block(lvl) {
     return {
-      parent: null,
+      children: [],
       length: 0,
       level: lvl,
       lines: [],
-      children: [],
+      parent: null,
       addChild: function (obj) {
         this.children.push(obj);
         obj.parent = this;
@@ -4487,21 +4488,20 @@ function YAML() {
     };
   }
   function parser(str) {
-    var regLevel = regex['regLevel'];
-    var invalidLine = regex['invalidLine'];
-    var lines = str.split('\n');
-    var m;
-    var level = 0,
-      curLevel = 0;
     var blocks = [];
-    var result = new Block(-1);
+    var curLevel = 0;
     var currentBlock = new Block(0);
-    result.addChild(currentBlock);
+    var invalidLine = regex['invalidLine'];
+    var level = 0;
     var levels = [];
     var line = '';
+    var lines = str.split('\n');
+    var m;
+    var regLevel = regex['regLevel'];
+    var result = new Block(-1);
+    result.addChild(currentBlock);
     blocks.push(currentBlock);
     levels.push(level);
-
     for (var i = 0, len = lines.length; i < len; ++i) {
       line = lines[i];
       if (line.match(invalidLine)) {
@@ -4570,10 +4570,10 @@ function YAML() {
       res[m[1]] = processValue(m[2]);
       return res;
     } else if ((m = val.match(regex['array']))) {
-      var count = 0,
-        c = ' ';
-      var res = [];
+      var c = ' ';
       var content = '';
+      var count = 0;
+      var res = [];
       var str = false;
       for (var j = 0, lenJ = m[1].length; j < lenJ; ++j) {
         c = m[1][j];
@@ -4601,10 +4601,10 @@ function YAML() {
       if (content.length > 0) res.push(processValue(content));
       return res;
     } else if ((m = val.match(regex['map']))) {
-      var count = 0,
-        c = ' ';
-      var res = [];
+      var c = ' ';
       var content = '';
+      var count = 0;
+      var res = [];
       var str = false;
       for (var j = 0, lenJ = m[1].length; j < lenJ; ++j) {
         c = m[1][j];
@@ -4629,9 +4629,7 @@ function YAML() {
         }
         content += c;
       }
-
       if (content.length > 0) res.push(content);
-
       var newRes = {};
       for (var j = 0, lenJ = res.length; j < lenJ; ++j) {
         if ((m = res[j].match(regex['key_value']))) {
@@ -4653,32 +4651,29 @@ function YAML() {
   }
   function processLiteralBlock(block) {
     var lines = block.lines;
-    var children = block.children;
     var str = lines.join('\n');
+    var children = block.children;
     for (var i = 0, len = children.length; i < len; ++i) {
       str += processLiteralBlock(children[i]);
     }
     return str;
   }
   function processBlock(blocks) {
-    var m = null;
-    var res = {};
-    var lines = null;
     var children = null;
     var currentObj = null;
-    var level = -1;
-    var processedBlocks = [];
     var isMap = true;
-
+    var level = -1;
+    var lines = null;
+    var m = null;
+    var processedBlocks = [];
+    var res = {};
     for (var j = 0, lenJ = blocks.length; j < lenJ; ++j) {
       if (level != -1 && level != blocks[j].level) continue;
-
       processedBlocks.push(j);
       level = blocks[j].level;
       lines = blocks[j].lines;
       children = blocks[j].children;
       currentObj = null;
-
       for (var i = 0, len = lines.length; i < len; ++i) {
         var line = lines[i];
         if ((m = line.match(regex['key']))) {
@@ -4776,8 +4771,8 @@ function YAML() {
   }
   function preProcess(src) {
     var m;
-    var lines = src.split('\n');
     var r = regex['comment'];
+    var lines = src.split('\n');
     for (var i in lines) {
       if ((m = lines[i].match(r))) {
         if (typeof m[3] !== 'undefined') {

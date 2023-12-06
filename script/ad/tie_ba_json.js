@@ -107,12 +107,10 @@ if (url.includes('tiebaads/commonbatch') && method === postMethod) {
   body.thread_list = removeLive(body.thread_list);
 } else if (url.includes('c/f/frs/generalTabList')) {
 }
-
 body = JSON.stringify(body);
 $done({
   body
 });
-
 function getUrlParamValue(url, queryName) {
   return Object.fromEntries(
     url
