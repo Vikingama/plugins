@@ -4,6 +4,7 @@
 
 **特别感谢（排名不分先后）：**
 
+- [@anti-AD](https://github.com/privacy-protection-tools/anti-AD)
 - [@app2smile](https://github.com/app2smile/rules)
 - [@blackmatrix7](https://github.com/blackmatrix7/ios_rule_script)
 - [@ddgksf2013](https://github.com/ddgksf2013/ddgksf2013)
