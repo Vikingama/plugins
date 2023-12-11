@@ -10514,7 +10514,6 @@ function Env(t, e) {
             $notification.post(e, s, a, i(r));
             break;
           case 'Quantumult X':
-            $notify(e, s, a, i(r));
             break;
           case 'Node.js':
         }

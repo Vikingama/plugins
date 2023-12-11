@@ -2344,9 +2344,7 @@
       setVal(e, t) {
         $prefs.setValueForKey(e, t);
       }
-      msg(e = this.name, t = '', r = '', n) {
-        $notify(e, t, r, { 'open-url': n ?? '' });
-      }
+      msg(e = this.name, t = '', r = '', n) {}
       async fetch(e) {
         return await new Promise(t => {
           let r = { url: '', method: 'GET' };

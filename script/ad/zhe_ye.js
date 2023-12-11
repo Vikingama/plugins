@@ -1443,7 +1443,6 @@ function MagicNotification(o, s, a, l) {
       if (!!n) $notification.post(e, t, r, n);
       else $notification.post(e, t, r);
     } else if (s.isQuanX) {
-      $notify(e, t, r, n);
     }
     if (c && d) {
       u(e, t, r);
