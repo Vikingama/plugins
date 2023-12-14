@@ -195,6 +195,8 @@ DOMAIN,payments-jp.amazon.com
 DOMAIN,s3-ap-northeast-1.amazonaws.com
 DOMAIN,s3-ap-southeast-2.amazonaws.com
 # > Alphabet
+DOMAIN-KEYWORD,.blogspot.
+DOMAIN-KEYWORD,google
 DOMAIN-SUFFIX,abc.xyz
 DOMAIN-SUFFIX,admob.com
 DOMAIN-SUFFIX,adsense.com
@@ -219,8 +221,6 @@ DOMAIN-SUFFIX,getoutline.org
 DOMAIN-SUFFIX,ggpht.com
 DOMAIN-SUFFIX,gmail.com
 DOMAIN-SUFFIX,gmodules.com
-DOMAIN-KEYWORD,.blogspot.
-DOMAIN-KEYWORD,google
 DOMAIN-SUFFIX,goog
 DOMAIN-SUFFIX,gvt0.com
 DOMAIN-SUFFIX,gvt1.com

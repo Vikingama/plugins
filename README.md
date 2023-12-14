@@ -1,4 +1,4 @@
-## 自用 QX 去广告/分流[规则](https://raw.githubusercontent.com/Vikingama/plugins/main/index.conf)
+## 自用 [QuantumultX 规则](https://raw.githubusercontent.com/Vikingama/plugins/main/index.conf)、[uBlocklist 规则](https://raw.githubusercontent.com/Vikingama/plugins/main/filter/ini/ublocklist_pattern.ini)
 
 ![](https://profile-counter.glitch.me/Vikingama-plugins/count.svg)
 
