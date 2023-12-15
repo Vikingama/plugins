@@ -12,4 +12,6 @@
 - [@KOP-XIAO](https://github.com/KOP-XIAO/QuantumultX)
 - [@Peng-YM](https://github.com/Peng-YM/QuanX)
 - [@RuCu6](https://github.com/RuCu6/QuanX)
+- [@stamparm](https://github.com/stamparm/ipsum)
 - [@sve1r](https://github.com/sve1r/Rules-For-Quantumult-X)
+- [@trick77](https://github.com/trick77/ipset-blacklist)
