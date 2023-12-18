@@ -15,3 +15,11 @@
 - [@stamparm](https://github.com/stamparm/ipsum)
 - [@sve1r](https://github.com/sve1r/Rules-For-Quantumult-X)
 - [@trick77](https://github.com/trick77/ipset-blacklist)
+
+<!--
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Vikingama/Vikingama/output/github-contribution-grid-snake-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Vikingama/Vikingama/output/github-contribution-grid-snake.svg">
+    <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Vikingama/Vikingama/output/github-contribution-grid-snake.svg">
+  </picture>
+ -->
