@@ -27,12 +27,22 @@ DOMAIN-SUFFIX,sndcdn.com
 DOMAIN-SUFFIX,soundcloud.com
 # > Spotify
 USER-AGENT,Spotify*
+DOMAIN-KEYWORD,-spotify-com
+DOMAIN-KEYWORD,spotify.com
 DOMAIN-SUFFIX,pscdn.co
 DOMAIN-SUFFIX,scdn.co
 DOMAIN-SUFFIX,spoti.fi
 DOMAIN-SUFFIX,spotify.com
-DOMAIN-KEYWORD,-spotify-com
-DOMAIN-KEYWORD,spotify.com
+DOMAIN-SUFFIX,spotify.design
+DOMAIN-SUFFIX,spotifycdn.com
+DOMAIN-SUFFIX,spotifycdn.net
+DOMAIN-SUFFIX,spotifycharts.com
+DOMAIN-SUFFIX,spotifycodes.com
+DOMAIN-SUFFIX,spotifyforbrands.com
+DOMAIN-SUFFIX,spotilocal.com
+DOMAIN-SUFFIX,tospotify.com
+IP-CIDR,104.154.127.126/32
+IP-CIDR,35.186.224.47/32
 # > TIDAL
 USER-AGENT,TIDAL*
 DOMAIN-SUFFIX,tidal.com
@@ -62,7 +72,7 @@ DOMAIN-SUFFIX,channel4.com
 # > Amazon Prime Video
 USER-AGENT,InstantVideo.US*
 USER-AGENT,Prime%20Video*
-DOMAIN-KEYWORD,avoddashs
+DOMAIN-KEYWORD,.avoddashs.
 DOMAIN-SUFFIX,aiv-cdn.net
 DOMAIN-SUFFIX,aiv-delivery.net
 DOMAIN-SUFFIX,amazonvideo.com
@@ -76,10 +86,7 @@ DOMAIN,d22qjgkvxw22r6.cloudfront.net
 DOMAIN,d25xi40x97liuc.cloudfront.net
 DOMAIN,d27xxe7juh1us6.cloudfront.net
 DOMAIN,dmqdd6hw24ucf.cloudfront.net
-DOMAIN,dmqdd6hw24ucf.cloudfront.net
 DOMAIN,fls-na.amazon.com
-# > Apple Music TV
-DOMAIN,tv.applemusic.com
 # > Apple TV
 DOMAIN,linear.tv.apple.com
 DOMAIN,play-edge.itunes.apple.com
@@ -93,7 +100,7 @@ DOMAIN,gamer-cds.cdn.hinet.net
 DOMAIN,gamer2-cds.cdn.hinet.net
 # > BBC iPlayer
 USER-AGENT,BBCiPlayer*
-DOMAIN-KEYWORD,bbcfmt
+DOMAIN-KEYWORD,.bbcfmt.
 DOMAIN-KEYWORD,uk-live
 DOMAIN-SUFFIX,bbc.co.uk
 DOMAIN-SUFFIX,bbci.co.uk
@@ -106,7 +113,7 @@ DOMAIN,upos-bstar-mirrorakam.akamaized.net
 DOMAIN,upos-bstar1-mirrorakam.akamaized.net
 # > DAZN
 USER-AGENT,DAZN*
-DOMAIN-KEYWORD,voddazn
+DOMAIN-KEYWORD,.voddazn.
 DOMAIN-SUFFIX,dazn-api.com
 DOMAIN-SUFFIX,dazn.com
 DOMAIN-SUFFIX,dazndn.com
@@ -227,7 +234,6 @@ DOMAIN-SUFFIX,nflximg.com
 DOMAIN-SUFFIX,nflximg.net
 DOMAIN-SUFFIX,nflxso.net
 DOMAIN-SUFFIX,nflxvideo.net
-# GEOIP,NETFLIX,no-resolve
 # > Niconico
 USER-AGENT,Niconico*
 DOMAIN-SUFFIX,dmc.nico
@@ -262,17 +268,6 @@ DOMAIN-SUFFIX,pornhubpremium.com
 USER-AGENT,TaiwanGood*
 DOMAIN-SUFFIX,skyking.com.tw
 DOMAIN,hamifans.emome.net
-# > TikTok
-USER-AGENT,TikTok*
-DOMAIN-KEYWORD,tiktokcdn-
-DOMAIN-SUFFIX,byteoversea.com
-DOMAIN-SUFFIX,ibytedtos.com
-DOMAIN-SUFFIX,muscdn.com
-DOMAIN-SUFFIX,musical.ly
-DOMAIN-SUFFIX,tik-tokapi.com
-DOMAIN-SUFFIX,tiktok.com
-DOMAIN-SUFFIX,tiktokcdn.com
-DOMAIN-SUFFIX,tiktokv.com
 # > TVer
 USER-AGENT,TVer-Release*
 DOMAIN-SUFFIX,tver.jp
@@ -289,7 +284,7 @@ DOMAIN,dfp6rglgjqszk.cloudfront.net
 USER-AGENT,WeTV*
 DOMAIN-SUFFIX,wetv.vip
 DOMAIN-SUFFIX,wetvinfo.com
-IP-CIDR,150.109.28.51/32,no-resolve
+IP-CIDR,150.109.28.51/32
 # > YouTube
 USER-AGENT,com.google.ios.youtube*
 USER-AGENT,YouTube*

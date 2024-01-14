@@ -196,7 +196,7 @@ DOMAIN,s3-ap-northeast-1.amazonaws.com
 DOMAIN,s3-ap-southeast-2.amazonaws.com
 # > Alphabet
 DOMAIN-KEYWORD,.blogspot.
-DOMAIN-KEYWORD,google
+DOMAIN-KEYWORD,.google.
 DOMAIN-SUFFIX,abc.xyz
 DOMAIN-SUFFIX,admob.com
 DOMAIN-SUFFIX,adsense.com
@@ -308,10 +308,10 @@ DOMAIN-SUFFIX,line-apps.com
 DOMAIN-SUFFIX,line-scdn.net
 DOMAIN-SUFFIX,line.me
 DOMAIN-SUFFIX,naver.jp
-IP-CIDR,103.2.30.0/23,no-resolve
-IP-CIDR,125.209.208.0/20,no-resolve
-IP-CIDR,147.92.128.0/17,no-resolve
-IP-CIDR,203.104.144.0/21,no-resolve
+IP-CIDR,103.2.30.0/23
+IP-CIDR,125.209.208.0/20
+IP-CIDR,147.92.128.0/17
+IP-CIDR,203.104.144.0/21
 # > Meta
 DOMAIN-KEYWORD,.facebook.
 DOMAIN-SUFFIX,accountkit.com
@@ -334,6 +334,15 @@ DOMAIN-SUFFIX,readyatdawn.com
 DOMAIN-SUFFIX,rocksdb.org
 DOMAIN-SUFFIX,whatsapp.com
 DOMAIN-SUFFIX,whatsapp.net
+IP-CIDR,169.45.248.118/32
+IP-CIDR,3.123.36.126/32
+IP-CIDR,35.157.215.84/32
+IP-CIDR,35.157.217.255/32
+IP-CIDR,52.58.209.134/32
+IP-CIDR,54.162.243.80/32
+IP-CIDR,54.173.34.141/32
+IP-CIDR,54.235.23.242/32
+IP-CIDR,54.93.124.31/32
 # > Microsoft
 DOMAIN-SUFFIX,aka.ms
 DOMAIN-SUFFIX,github.blog
@@ -372,20 +381,20 @@ DOMAIN-SUFFIX,telegra.ph
 DOMAIN-SUFFIX,telegram.me
 DOMAIN-SUFFIX,telegram.org
 DOMAIN-SUFFIX,telesco.pe
-IP-CIDR,149.154.160.0/20,no-resolve
-IP-CIDR,185.76.151.0/24,no-resolve
-IP-CIDR,91.105.192.0/23,no-resolve
-IP-CIDR,91.108.12.0/22,no-resolve
-IP-CIDR,91.108.16.0/22,no-resolve
-IP-CIDR,91.108.20.0/22,no-resolve
-IP-CIDR,91.108.4.0/22,no-resolve
-IP-CIDR,91.108.56.0/22,no-resolve
-IP-CIDR,91.108.8.0/22,no-resolve
-IP-CIDR6,2001:67c:4e8::/48,no-resolve
-IP-CIDR6,2001:b28:f23c::/48,no-resolve
-IP-CIDR6,2001:b28:f23d::/48,no-resolve
-IP-CIDR6,2001:b28:f23f::/48,no-resolve
-IP-CIDR6,2a0a:f280::/32,no-resolve
+IP-CIDR,149.154.160.0/20
+IP-CIDR,185.76.151.0/24
+IP-CIDR,91.105.192.0/23
+IP-CIDR,91.108.12.0/22
+IP-CIDR,91.108.16.0/22
+IP-CIDR,91.108.20.0/22
+IP-CIDR,91.108.4.0/22
+IP-CIDR,91.108.56.0/22
+IP-CIDR,91.108.8.0/22
+IP6-CIDR,2001:67c:4e8::/48
+IP6-CIDR,2001:b28:f23c::/48
+IP6-CIDR,2001:b28:f23d::/48
+IP6-CIDR,2001:b28:f23f::/48
+IP6-CIDR,2a0a:f280::/32
 # > The Economist
 DOMAIN-SUFFIX,economist.com
 DOMAIN-SUFFIX,static-economist.com
@@ -402,7 +411,6 @@ DOMAIN-SUFFIX,tmagazine.com
 DOMAIN-SUFFIX,periscope.tv
 DOMAIN-SUFFIX,pscp.tv
 DOMAIN-SUFFIX,t.co
-DOMAIN-SUFFIX,tweetdeck.com
 DOMAIN-SUFFIX,twimg.co
 DOMAIN-SUFFIX,twimg.com
 DOMAIN-SUFFIX,twitpic.com
@@ -441,19 +449,19 @@ DOMAIN,wego.here.com
 # > Alphabet
 DOMAIN-SUFFIX,go.dev
 DOMAIN-SUFFIX,golang.org
-# > Apple
+# > Apple Media
 DOMAIN-SUFFIX,appsto.re
 DOMAIN-SUFFIX,smoot.apple.com
 DOMAIN,amp-api.podcasts.apple.com
+DOMAIN,apps.apple.com
 DOMAIN,beta.music.apple.com
+DOMAIN,books.apple.com
 DOMAIN,books.itunes.apple.com
+DOMAIN,itunes.apple.com
 DOMAIN,lookup-api.apple.com
 DOMAIN,radio.itunes.apple.com
-DOMAIN,apps.apple.com
-DOMAIN,books.apple.com
-DOMAIN,itunes.apple.com
 DOMAIN,tv.apple.com
-# > News
+# > Apple News
 DOMAIN-SUFFIX,apple.news
 DOMAIN,apple.comscoreresearch.com
 DOMAIN,gateway.icloud.com
@@ -468,3 +476,22 @@ DOMAIN-SUFFIX,licdn.com
 DOMAIN-SUFFIX,linkedin.com
 DOMAIN-SUFFIX,msn.com
 DOMAIN-SUFFIX,skype.com
+# > Synology
+DOMAIN-SUFFIX,DiskStation.me
+DOMAIN-SUFFIX,DSCloud.biz
+DOMAIN-SUFFIX,DSCloud.me
+DOMAIN-SUFFIX,DSCloud.mobi
+DOMAIN-SUFFIX,DSmuNAS.com
+DOMAIN-SUFFIX,DSmuNAS.net
+DOMAIN-SUFFIX,DSmuNAS.org
+DOMAIN-SUFFIX,FamilyDS.com
+DOMAIN-SUFFIX,FamilyDS.net
+DOMAIN-SUFFIX,FamilyDS.org
+DOMAIN-SUFFIX,i234.me
+DOMAIN-SUFFIX,myDS.com
+DOMAIN-SUFFIX,QuickConnect.to
+DOMAIN-SUFFIX,Synodns.com
+DOMAIN-SUFFIX,Synology.cn
+DOMAIN-SUFFIX,Synology.com
+DOMAIN-SUFFIX,Synology.me
+DOMAIN,d2f0395ykn6hxb.cloudfront.net
