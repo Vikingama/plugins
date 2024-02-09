@@ -1,6 +1,6 @@
 let persisVal = read('UnblockURLinWeChat');
-let forceRedirect = persisVal.forceRedirect === 'true';
 let useCache = persisVal.useCache === 'true';
+let forceRedirect = persisVal.forceRedirect === 'true';
 let wechatExportKey = persisVal.wechatExportKey || '';
 if (typeof $argument != 'undefined') {
   let arg = Object.fromEntries(
@@ -9,9 +9,9 @@ if (typeof $argument != 'undefined') {
   useCache = arg.useCache === 'true';
   forceRedirect = arg.forceRedirect === 'ture';
 }
-const alipayScheme = 'alipays://platformapi/startapp?appId=20000067&url=';
-const cacheURL = 'https://web.archive.org/web/20991231999999/';
 const respBody = $response.body;
+const cacheURL = 'https://web.archive.org/web/20991231999999/';
+const alipayScheme = 'alipays://platformapi/startapp?appId=20000067&url=';
 const isQuanX = typeof $notify != 'undefined';
 const isSurgeiOS =
   'undefined' !== typeof $environment &&
@@ -83,9 +83,9 @@ if (
       let obj = JSON.parse(resp.body);
       if (obj.hasOwnProperty('btns')) {
         let trueURL = decodeURIComponent(
-          /url=(.*)/.exec(obj.btns[0].url)[1]
-        ).replace(/&block_?type(.*)/, '');
-        trueURL = trueURL.includes('.') ? trueURL : Base64.decode(trueURL);
+          /url=([A-Za-z0-9+/=]+)/.exec(obj.btns[0].url)[1]
+        );
+        trueURL = Base64.decode(trueURL);
         trueURL = trueURL.indexOf('http') == 0 ? trueURL : 'http://' + trueURL;
         if (!trueURL.includes('web.archive.org/web')) {
           notify('', '点击跳转到浏览器打开', trueURL, trueURL);
@@ -118,9 +118,6 @@ function notify(title = '', subtitle = '', content = '', open_url) {
   if (isQuanX && /iOS/.test($environment.version)) {
     let opts = {};
     if (open_url) opts['open-url'] = open_url;
-    if (JSON.stringify(opts) == '{}') {
-    } else {
-    }
   } else if (isSurgeiOS || isStashiOS || isLanceX) {
     let opts = {};
     if (open_url) opts['url'] = open_url;
