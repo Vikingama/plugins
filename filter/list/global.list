@@ -495,3 +495,5 @@ HOST-SUFFIX,Synology.cn
 HOST-SUFFIX,Synology.com
 HOST-SUFFIX,Synology.me
 HOST,d2f0395ykn6hxb.cloudfront.net
+# > EhcoRelay
+HOST-SUFFIX,ehco-relay.cc
