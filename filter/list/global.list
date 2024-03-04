@@ -190,7 +190,6 @@ HOST,a248.e.akamai.net
 HOST,a771.dscq.akamai.net
 # > Amazon
 HOST-SUFFIX,amazon.co.jp
-HOST,d3c33hcgiwev3.cloudfront.net
 HOST,payments-jp.amazon.com
 HOST,s3-ap-northeast-1.amazonaws.com
 HOST,s3-ap-southeast-2.amazonaws.com
@@ -494,6 +493,5 @@ HOST-SUFFIX,Synodns.com
 HOST-SUFFIX,Synology.cn
 HOST-SUFFIX,Synology.com
 HOST-SUFFIX,Synology.me
-HOST,d2f0395ykn6hxb.cloudfront.net
 # > EhcoRelay
 HOST-SUFFIX,ehco-relay.cc

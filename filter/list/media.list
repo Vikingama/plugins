@@ -374,7 +374,6 @@ HOST-SUFFIX,anidom.com
 HOST-SUFFIX,casoneexchange.com
 HOST-SUFFIX,cdn-fox-networks-group-green.akamaized.net
 HOST-SUFFIX,coronavirusnow.com
-HOST-SUFFIX,d3cv4a9a9wh0bt.cloudfront.net
 HOST-SUFFIX,dashasiafox.akamaized.net
 HOST-SUFFIX,fox
 HOST-SUFFIX,fox-corporation.com
@@ -1097,8 +1096,6 @@ HOST-SUFFIX,kalhlspd-a.akamaihd.net
 HOST-SUFFIX,viu.com
 HOST-SUFFIX,viu.now.com
 HOST-SUFFIX,viu.tv
-HOST-SUFFIX,cognito-identity.us-east-1.amazonaws.com
-HOST-SUFFIX,mobileanalytics.us-east-1.amazonaws.com
 # > VOA
 HOST-SUFFIX,amerikaninsesi.com
 HOST-SUFFIX,amerikaninsesi.org
