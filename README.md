@@ -1,4 +1,4 @@
-## 自用 [QuantumultX 规则](https://raw.githubusercontent.com/Vikingama/plugins/main/index.conf)、[uBlocklist 规则](https://raw.githubusercontent.com/Vikingama/plugins/main/filter/ini/ublocklist_pattern.ini)
+## 自用 [QuantumultX 规则](https://raw.githubusercontent.com/Vikingama/plugins/beta/conf/index.conf)、[uBlocklist 规则](https://raw.githubusercontent.com/Vikingama/plugins/beta/conf/ublocklist.ini)
 
 ![](https://profile-counter.glitch.me/Vikingama-plugins/count.svg)
 
@@ -7,14 +7,15 @@
 - [@anti-AD](https://github.com/privacy-protection-tools/anti-AD)
 - [@app2smile](https://github.com/app2smile/rules)
 - [@blackmatrix7](https://github.com/blackmatrix7/ios_rule_script)
+- [@BlockList](http://www.blocklist.de/en/index.html)
+- [@CINS](https://cinsscore.com/)
 - [@ddgksf2013](https://github.com/ddgksf2013/ddgksf2013)
-- [@erdongchanyo](https://github.com/erdongchanyo/Rules)
+- [@DivineEngine](https://github.com/DivineEngine/Profiles/tree/master)
+- [@FireHOL](https://github.com/firehol/blocklist-ipsets)
+- [@GreenSnow](https://greensnow.co/)
 - [@KOP-XIAO](https://github.com/KOP-XIAO/QuantumultX)
-- [@Peng-YM](https://github.com/Peng-YM/QuanX)
-- [@RuCu6](https://github.com/RuCu6/QuanX)
-- [@stamparm](https://github.com/stamparm/ipsum)
-- [@sve1r](https://github.com/sve1r/Rules-For-Quantumult-X)
-- [@trick77](https://github.com/trick77/ipset-blacklist)
+- [@limbopro](https://github.com/limbopro/Adblock4limbo)
+- [@missuo](https://github.com/missuo/ASN-China)
 
 <!--
   <picture>
