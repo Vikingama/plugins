@@ -30,6 +30,4 @@ _cgo_gotypes.go
 .DS_Store
 .hugo_build.lock
 iOS.conf
-iphone.conf
-macbook.conf
 macOS.conf
