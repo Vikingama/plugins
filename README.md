@@ -15,6 +15,7 @@
 - [@DivineEngine](https://github.com/DivineEngine/Profiles)
 - [@FireHOL](https://github.com/firehol/blocklist-ipsets)
 - [@GreenSnow](https://greensnow.co/)
+- [@Hackl0us](https://github.com/Hackl0us/GeoIP2-CN)
 - [@KOP-XIAO](https://github.com/KOP-XIAO/QuantumultX)
 - [@limbopro](https://github.com/limbopro/Adblock4limbo)
 - [@missuo](https://github.com/missuo/ASN-China)
